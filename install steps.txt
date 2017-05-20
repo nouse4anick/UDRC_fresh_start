@@ -1,0 +1,8 @@
+
+git clone https://github.com/nwdigitalradio/n7nix
+cd n7nix/config
+sudo su
+./image_install.sh
+
+change direwolf shortcut working directory to /home/pi 
+run pi3-fldigi-setup.sh
