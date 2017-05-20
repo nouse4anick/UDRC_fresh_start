@@ -1,6 +1,8 @@
 #!/bin/sh
 #taken from the NW Digital Radio group wiki on installing fldigi
-
+#update the pi:
+sudo apt-get update
+sudo apt-get upgrade -Y
 #make sure in home directory
 cd ~
 #grab the scripts
@@ -27,3 +29,4 @@ make
 sudo make install
 
 #todo: add xastir install
+sudo apt-get install xastir -Y
