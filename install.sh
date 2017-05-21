@@ -18,7 +18,7 @@ cp ./UDRC_fresh_start/direwolf.conf ./direwolf.conf
 #note: install script sets audio levels automatiaclly
 
 # install fldigi libraries and headerfiles
-sudo apt-get install libfltk1.3-dev libsamplerate0-dev portaudio19-dev
+sudo apt-get install libfltk1.3-dev libsamplerate0-dev portaudio19-dev -y
 
 #get current version of fldigi
 wget -N https://sourceforge.net/projects/fldigi/files/fldigi/fldigi-4.0.4.tar.gz
@@ -28,5 +28,11 @@ cd fldigi-4.0.4
 make
 sudo make install
 
-#todo: add xastir install
-sudo apt-get install xastir -Y
+#install xastir
+sudo apt-get install xastir -y
+
+#copy all shortcuts to desktop for easy access:
+cd ~
+cp ./UDRC_fresh_start/fldigi.desktop ./Desktop/fldigi.desktop
+cp ./UDRC_fresh_start/direwolf.desktop ./Desktop/direwolf.desktop
+cp ./UDRC_fresh_start/xastir.desktop ./Desktop/xastir.desktop
