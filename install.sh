@@ -2,7 +2,8 @@
 #taken from the NW Digital Radio group wiki on installing fldigi
 #update the pi:
 sudo apt-get update
-sudo apt-get upgrade -Y
+sudo apt-get upgrade -y
+
 #make sure in home directory
 cd ~
 #grab the scripts
@@ -33,6 +34,11 @@ sudo apt-get install xastir -y
 
 #copy all shortcuts to desktop for easy access:
 cd ~
-cp ./UDRC_fresh_start/fldigi.desktop ./Desktop/fldigi.desktop
-cp ./UDRC_fresh_start/direwolf.desktop ./Desktop/direwolf.desktop
-cp ./UDRC_fresh_start/xastir.desktop ./Desktop/xastir.desktop
+cp ./UDRC_fresh_start/desktop/fldigi.desktop ./Desktop/fldigi.desktop
+cp ./UDRC_fresh_start/desktop/direwolf.desktop ./Desktop/direwolf.desktop
+cp ./UDRC_fresh_start/desktop/xastir.desktop ./Desktop/xastir.desktop
+
+#copy all config files
+cp ./UDRC_fresh_start/fldigi/fldigi_def.xml ./.fldigi/fldigi_def.xml
+cp ./UDRC_fresh_start/xastir/selected_maps.sys ./.xastir/config/selected_maps.sys
+cp ./UDRC_fresh_start/xastir/xastir.cnf ./.xastir/config/xastir.cnf
