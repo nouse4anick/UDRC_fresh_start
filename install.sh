@@ -34,11 +34,24 @@ sudo apt-get install xastir -y
 
 #copy all shortcuts to desktop for easy access:
 cd ~
-cp ./UDRC_fresh_start/desktop/fldigi.desktop ./Desktop/fldigi.desktop
-cp ./UDRC_fresh_start/desktop/direwolf.desktop ./Desktop/direwolf.desktop
-cp ./UDRC_fresh_start/desktop/xastir.desktop ./Desktop/xastir.desktop
+cp ./UDRC_fresh_start/desktop/* ./Desktop
+#cp ./UDRC_fresh_start/desktop/fldigi.desktop ./Desktop/fldigi.desktop
+#cp ./UDRC_fresh_start/desktop/direwolf.desktop ./Desktop/direwolf.desktop
+#cp ./UDRC_fresh_start/desktop/xastir.desktop ./Desktop/xastir.desktop
 
 #copy all config files
 cp ./UDRC_fresh_start/fldigi/fldigi_def.xml ./.fldigi/fldigi_def.xml
-cp ./UDRC_fresh_start/xastir/selected_maps.sys ./.xastir/config/selected_maps.sys
-cp ./UDRC_fresh_start/xastir/xastir.cnf ./.xastir/config/xastir.cnf
+cp ./UDRC_fresh_start/xastir/* ./.xastir/config
+#cp ./UDRC_fresh_start/xastir/selected_maps.sys ./.xastir/config/selected_maps.sys
+#cp ./UDRC_fresh_start/xastir/xastir.cnf ./.xastir/config/xastir.cnf
+
+#check for udrc:
+echo "checking UDRC eeprom version...."
+udrc="Universal Digital Radio Controller II"
+outvar=`cat /sys/firmware/devicetree/base/hat/product`
+if [ "$udrc" == "$outvar"]
+then
+echo "yep, you have a UDRC 2"
+else
+echo "nope, you do not have a udrc 2, you might have to do an eeprom upgrade!"
+fi
