@@ -11,18 +11,20 @@
 #note: might need to delete current install of fldigi????
 #ok, according to io group for fldigi you have to uninstall the current version, so we need to find a way to do that
 #but for now lets just get it over with
-cd ~/fldigi-4.0.4
-sudo make uninstall
-cd ..
+#cd ~/fldigi-4.0.4
+#sudo make uninstall
+#cd ..
 #download and install the new one
-wget -N https://sourceforge.net/projects/fldigi/files/fldigi/fldigi-4.0.6.tar.gz
-tar -zxvsf fldigi-4.0.6.tar.gz
-cd fldigi-4.0.6
+#wget -N https://sourceforge.net/projects/fldigi/files/fldigi/fldigi-4.0.6.tar.gz
+#tar -zxvsf fldigi-4.0.6.tar.gz
+#cd fldigi-4.0.6
 #BEFORE INSTALL, get all the deps for it!!! this takes editing the source list file and other fun stuff
-sudo echo "deb-src http://archive.raspbian.org/raspbian/ jessie main contrib non-free rpi" > /etc/apt/sources.list
+sudo cp /etc/apt/sources.list /etc/apt/sources.4.0.6.bkup
+sudo sed '3,3s/.//' /etc/apt/sources.list | sudo tee /etc/apt/sources.list
+#update and build the deps for fldigi
 sudo apt-get update
 sudo apt-get build-dep fldigi -y
 # now we can configure and install
-./configure
-make
-sudo make install
+#./configure
+#make
+#sudo make install
