@@ -37,7 +37,7 @@ sudo apt-get build-dep fldigi -y
 ./configure
 make
 sudo make install
-
+cp data/fldigi.desktop ~/Desktop/
 #install flamp and flmsg
 
 cd ..
@@ -50,8 +50,10 @@ cd flamp-2.2.03
 ./configure
 make
 sudo make install
+cp data/flamp.desktop ~/Desktop
 
 cd ../flmsg-4.0.2
 ./configure
 make
 sudo make install
+cp data/flmsg.desktop ~/Desktop/
