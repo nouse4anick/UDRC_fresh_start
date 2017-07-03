@@ -38,6 +38,8 @@ sudo apt-get build-dep fldigi -y
 make
 sudo make install
 cp data/fldigi.desktop ~/Desktop/
+cp data/flarq.desktop ~/Desktop/
+
 #install flamp and flmsg
 
 cd ..
