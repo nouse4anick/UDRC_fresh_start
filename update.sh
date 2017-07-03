@@ -37,3 +37,21 @@ sudo apt-get build-dep fldigi -y
 ./configure
 make
 sudo make install
+
+#install flamp and flmsg
+
+cd ..
+wget -N https://sourceforge.net/projects/fldigi/files/flamp/flamp-2.2.03.tar.gz
+wget -N https://sourceforge.net/projects/fldigi/files/flmsg/flmsg-4.0.2.tar.gz
+tar -zxvsf flamp-2.2.03.tar.gz
+tar -zxvsf flmsg-4.0.2.tar.gz
+
+cd flamp-2.2.03
+./configure
+make
+sudo make install
+
+cd ../flmsg-4.0.2
+./configure
+make
+sudo make install
