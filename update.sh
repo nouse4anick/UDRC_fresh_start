@@ -72,7 +72,7 @@ if [ "$FLMSGPREV" != "$FLMSGCUR" ]; then
 	fi
 	wget -N https://sourceforge.net/projects/fldigi/files/flmsg/flmsg-$FLMSGCUR.tar.gz
 	tar -zxvsf flmsg-$FLMSGCUR.tar.gz
-	cd ../flmsg-$FLMSGCUR
+	cd flmsg-$FLMSGCUR
 	./configure
 	make
 	sudo make install
