@@ -1,17 +1,28 @@
-#!/bin/sh
+#!/bin/bash
+# version 1.0.3
 # this script updates a previous install script from a past install
 # you should NOT use this script if you are starting out fresh!
 # 
 #current/past versions:
 #note: this script will SKIP any item that has the same current and previous version numbers!
-FLDIGICUR=4.0.8
+echo "This script will uninstall old versions of fldigi, flamp, and flmsg if found and update to defined version. Please double check to make sure the current versions are correct:"
+
+FLDIGICUR=4.0.16
 FLDIGIPREV=4.0.6
 
 FLAMPCUR=2.2.03
 FLAMPPREV=2.2.03
 
-FLMSGCUR=4.0.3
+FLMSGCUR=4.0.6
 FLMSGPREV=4.0.2
+
+echo "Current versions:"
+echo "fldigi: " $FLDIGICUR
+echo "flamp: " $FLAMPCUR
+echo "flmsg: " $FLMSGCUR
+
+read -n 1 -s -r -p "Press any key to continue, ctrl+c to quit"
+echo
 
 #BEFORE INSTALL, get all the deps for it!!! this takes editing the source list file and other fun stuff
 sudo cp /etc/apt/sources.list /etc/apt/sources.4.0.6.bkup
@@ -24,6 +35,18 @@ echo "sources.list backed up to sources.4.0.6.bkup, please add any other sources
 #tried to use sed and tee to remove the 3rd line but no go =(
 #best method would be to just append the deb-src line to the bottom of the list but that also has issues
 #sudo sed '3,3s/.//' /etc/apt/sources.list | sudo tee /etc/apt/sources.list
+#NEW ISSUE: with compass 4.9.80-v7 udrc is broken! must add 'dtoverlay=' and 'dtoverlay=udrc' to the END of /boot/config.txt
+#check for dtoverlay:
+if !(grep -x "dtoverlay=" /boot/config.txt && grep -x "dtoverlay=udrc" /boot/config.txt); then
+	#not found, insert it:
+	echo "dtoverlay=" | sudo tee -a /boot/config.txt
+	echo "dtoverlay=udrc" | sudo tee -a /boot/config.txt
+	echo "dtoverlay lines added to /boot/config.txt, please check for correctness after install and reboot."
+else
+	echo "dtoverlay lines found, continuing with install"
+fi
+read -n 1 -s -r -p "Press any key to continue"
+echo
 #update and build the deps for fldigi
 sudo apt-get update
 sudo apt-get build-dep fldigi -y
@@ -78,3 +101,5 @@ if [ "$FLMSGPREV" != "$FLMSGCUR" ]; then
 	sudo make install
 	cp data/flmsg.desktop ~/Desktop/
 fi
+
+echo "update finished"
