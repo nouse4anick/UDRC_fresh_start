@@ -25,13 +25,13 @@ read -n 1 -s -r -p "Press any key to continue, ctrl+c to quit"
 echo
 
 #BEFORE INSTALL, get all the deps for it!!! this takes editing the source list file and other fun stuff
-sudo cp /etc/apt/sources.list /etc/apt/sources.4.0.6.bkup
+sudo cp /etc/apt/sources.list /etc/apt/sources.$FLDIGICUR.bkup
 #dirty way of doing it
 echo  "deb http://mirrordirector.raspbian.org/raspbian/ jessie main contrib non-free rpi
 # Uncomment line below then 'apt-get update' to enable 'apt-get source'
 deb-src http://archive.raspbian.org/raspbian/ jessie main contrib non-free rpi
 " | sudo tee /etc/apt/sources.list
-echo "sources.list backed up to sources.4.0.6.bkup, please add any other sources from the old file to the new one that are not already in there"
+echo "sources.list backed up to sources."$FLDIGICUR".bkup, please add any other sources from the old file to the new one that are not already in there"
 #tried to use sed and tee to remove the 3rd line but no go =(
 #best method would be to just append the deb-src line to the bottom of the list but that also has issues
 #sudo sed '3,3s/.//' /etc/apt/sources.list | sudo tee /etc/apt/sources.list
